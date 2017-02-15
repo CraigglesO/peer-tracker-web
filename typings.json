@@ -1,6 +1,6 @@
 {
-  "name": "peer-tracker",
-  "main": "peer-tracker.d.ts",
+  "name": "peer-tracker-web",
+  "main": "peer-tracker-web.d.ts",
   "homepage": "",
   "version": "1.1.2",
   "globalDevDependencies": {

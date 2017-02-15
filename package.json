@@ -1,12 +1,12 @@
 {
-  "name": "peer-tracker",
+  "name": "peer-tracker-web",
   "version": "1.1.2",
   "description": "Lightweight BitTorrent Tracker Client & Server Implementation",
-  "main": "./out/peer-tracker.js",
+  "main": "./out/peer-tracker-web.js",
   "scripts": {
     "test": "echo running server tests... && cd test && ts-node ../node_modules/blue-tape/bin/blue-tape \"**/*.ts\" | tap-spec",
     "start": "npm run build:live",
-    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./peer-tracker.ts",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./peer-tracker-web.ts",
     "build": "echo building... && typings bundle -o out/index.d.ts",
     "lint": "echo linting... && tslint \"**/*.ts\" -e \"source/**\" -e \"source-test/**\" -e \"out/**\" -e \"node_modules/**\" -e \"typings/**\"",
     "browser-test": "echo running browser tests... && echo no browser test",
@@ -16,9 +16,7 @@
     "all-tests": "npm test",
     "build+test": "npm run build && npm run all-tests",
     "lint+build+test": "npm run lint && npm run build+test",
-    "prepublish": "typings install",
-    "server": "./node_modules/.bin/ts-node ./peer-tracker-server.ts",
-    "client": "./node_modules/.bin/ts-node ./peer-tracker-client.ts"
+    "prepublish": "typings install"
   },
   "author": "Craig OConnor",
   "repository": {
