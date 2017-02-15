@@ -89,9 +89,7 @@ new Server(opts);
 
   **Client**
   ``` javascript
-// Scrape one hash
-let client = Client.udp("scrape", "0.0.0.0", 1337, 6688, "0123456789012345678901234567890123456789", 0, 0, 0);
-// OR ws:
+// ws:
 // Scrape multiple hashes:
 let client = Client.ws("scrape", "0.0.0.0", 80, 6688, ["0123456789012345678901234567890123456789", "0123456789012345678901234567890123456789"], 0, 0, 0);
 
@@ -129,25 +127,6 @@ interface Options {
   docker:  Boolean
 }
 ```
-
-
-`UDP CLIENT:`
-
-**udp(announcement, trackerHost, port, myPort, infoHash, left, uploaded, downloaded)**
-  * _announcement_ type: string
-    * `scrape`
-    * `complete`
-    * `start`
-    * `stop`
-    * `update`
-  * _trackerHost_: string
-    * **UDP**: `0.0.0.0`
-  * _port_: number
-  * _myPort_: number
-  * _infoHash_: string
-  * _left_: number
-  * _uploaded_: number
-  * _downloaded_: number
 
 `WS CLIENT:`
 
