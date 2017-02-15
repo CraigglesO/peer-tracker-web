@@ -1,17 +1,17 @@
-# peer-tracker [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url]
+# peer-tracker-web [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url]
 
-[travis-image]: https://travis-ci.org/CraigglesO/peer-tracker.svg?branch=master
-[travis-url]: https://travis-ci.org/CraigglesO/peer-tracker
-[npm-image]: https://img.shields.io/npm/v/peer-tracker.svg
-[npm-url]: https://npmjs.org/package/peer-tracker
-[downloads-image]: https://img.shields.io/npm/dm/peer-tracker.svg
-[downloads-url]: https://npmjs.org/package/peer-tracker
+[travis-image]: https://travis-ci.org/CraigglesO/peer-tracker-web.svg?branch=master
+[travis-url]: https://travis-ci.org/CraigglesO/peer-tracker-web
+[npm-image]: https://img.shields.io/npm/v/peer-tracker-web.svg
+[npm-url]: https://npmjs.org/package/peer-tracker-web
+[downloads-image]: https://img.shields.io/npm/dm/peer-tracker-web.svg
+[downloads-url]: https://npmjs.org/package/peer-tracker-web
 
 ### Lightweight BitTorrent Tracker Client & (Persistent) Server Implementation
 <br />
 <br />
 <div align="center">
-  <img src ="https://github.com/CraigglesO/peer-tracker/blob/master/img/tracker.png" />
+  <img src ="https://github.com/CraigglesO/peer-tracker-web/blob/master/img/tracker.png" />
 </div>
 <br />
 <br />
@@ -19,6 +19,8 @@
 ### About
 
 **OFFICIALLY VERSION 1!**
+
+**THIS IS THE WEB COMPATIBLE VERSION**
 
 #### Example Use
 
@@ -32,7 +34,7 @@ Tutorial to use on a Digital Ocean server here:
 Docker images:
   * **REDIS** `oconnorct1/redis:latest`
   * **NGINX** `oconnorct1/nginx:latest`
-  * **NODE**  `oconnorct1/peer-tracker:latest`
+  * **NODE**  `oconnorct1/peer-tracker-web:latest`
 
 #### Ingenuity
 
@@ -58,7 +60,7 @@ Paired with client software, this package is ready to go.
 ## Install
 
 ``` javascript
-npm install peer-tracker
+npm install peer-tracker-web
 
 ```
 
