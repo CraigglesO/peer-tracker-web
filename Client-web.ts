@@ -2,7 +2,7 @@
 
 import { EventEmitter }   from "events";
 import * as writeUInt64BE from "writeuint64be";
-import * as WebSocket     from "ws";
+import { w3cwebsocket }   from "websocket";
 import { Buffer }         from "buffer";
 
 const debug            = require("debug")("PeerTracker:Client"),
@@ -68,11 +68,11 @@ class ClientWeb extends EventEmitter {
     // Setup server
 
     self.HOST = "ws://" + self.HOST + ":" + self.PORT;
-    self.server = new WebSocket( self.HOST );
-    self.server.on("open", function () {
+    self.server = new w3cwebsocket( self.HOST, 'echo-protocol' );
+    self.server.onopen = () => {
       self.prepAnnounce();
-    });
-    self.server.on("message", function(msg, flags) { self.message(msg, flags); });
+    };
+    self.server.onmessage = (e) => { self.message(e.data); };
 
   }
 
@@ -194,7 +194,7 @@ class ClientWeb extends EventEmitter {
     }
   }
 
-  message(msg: string | Buffer, rinfo: Object) {
+  message(msg: string | Buffer) {
     const self = this;
     let buf;
     if (!Buffer.isBuffer(msg))

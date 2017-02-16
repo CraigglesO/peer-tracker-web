@@ -6,7 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var events_1 = require("events");
 var writeUInt64BE = require("writeuint64be");
-var WebSocket = require("ws");
+var websocket_1 = require("websocket");
 var buffer_1 = require("buffer");
 var debug = require("debug")("PeerTracker:Client"), ACTION_CONNECT = 0, ACTION_ANNOUNCE = 1, ACTION_SCRAPE = 2, ACTION_ERROR = 3;
 var connectionIdHigh = 0x417, connectionIdLow = 0x27101980;
@@ -47,11 +47,11 @@ var ClientWeb = (function (_super) {
         self.IP_ADDRESS = 0;
         self.SCRAPE = false;
         self.HOST = "ws://" + self.HOST + ":" + self.PORT;
-        self.server = new WebSocket(self.HOST);
-        self.server.on("open", function () {
+        self.server = new websocket_1.w3cwebsocket(self.HOST, 'echo-protocol');
+        self.server.onopen = function () {
             self.prepAnnounce();
-        });
-        self.server.on("message", function (msg, flags) { self.message(msg, flags); });
+        };
+        self.server.onmessage = function (e) { self.message(e.data); };
         return _this;
     }
     ClientWeb.prototype.prepAnnounce = function () {
@@ -152,7 +152,7 @@ var ClientWeb = (function (_super) {
                 connectionIdLow = 0x27101980;
         }
     };
-    ClientWeb.prototype.message = function (msg, rinfo) {
+    ClientWeb.prototype.message = function (msg) {
         var self = this;
         var buf;
         if (!buffer_1.Buffer.isBuffer(msg))

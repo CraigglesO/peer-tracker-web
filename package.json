@@ -1,6 +1,6 @@
 {
   "name": "peer-tracker-web",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Lightweight BitTorrent Tracker Client & Server Implementation",
   "main": "./out/peer-tracker-web.js",
   "scripts": {
@@ -59,6 +59,7 @@
     "response-time": "^2.3.2",
     "string2compact": "^1.2.2",
     "uniq": "^1.0.1",
+    "websocket": "^1.0.24",
     "ws": "^1.1.1"
   }
 }

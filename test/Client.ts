@@ -37,13 +37,13 @@ import * as crypto from "crypto";
 //     });
 //   }, 1000);
 // });
-test("ws Client downloading scrape", (t) => {
-  t.plan(1);
-
-  t.true( true );
-
-  t.end();
-});
+// test("ws Client downloading scrape", (t) => {
+//   t.plan(1);
+//
+//   t.true( true );
+//
+//   t.end();
+// });
 
 
 function randomHash() {
