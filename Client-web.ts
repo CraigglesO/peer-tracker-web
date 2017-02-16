@@ -3,6 +3,7 @@
 import { EventEmitter }   from "events";
 import * as writeUInt64BE from "writeuint64be";
 import { w3cwebsocket }   from "websocket";
+import * as toBuffer      from "blob-to-buffer";
 import { Buffer }         from "buffer";
 
 const debug            = require("debug")("PeerTracker:Client"),
@@ -72,7 +73,11 @@ class ClientWeb extends EventEmitter {
     self.server.onopen = () => {
       self.prepAnnounce();
     };
-    self.server.onmessage = (e) => { self.message(e.data); };
+    self.server.onmessage = (e) => {
+      toBuffer(e.data, (err, buffer) => {
+        self.message(buffer);
+      });
+    };
 
   }
 
@@ -109,13 +114,7 @@ class ClientWeb extends EventEmitter {
 
   sendPacket(buf: Buffer) {
     const self = this;
-    if (self.TYPE === "udp") {
-      self.server.send(buf, 0, buf.length, self.PORT, self.HOST, (err) => {
-          if (err) { self.emit("error", err); }
-      });
-    } else {
-      self.server.send(buf);
-    }
+    self.server.send(buf);
   }
 
   startConnection() {

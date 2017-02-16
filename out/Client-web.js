@@ -7,6 +7,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var events_1 = require("events");
 var writeUInt64BE = require("writeuint64be");
 var websocket_1 = require("websocket");
+var toBuffer = require("blob-to-buffer");
 var buffer_1 = require("buffer");
 var debug = require("debug")("PeerTracker:Client"), ACTION_CONNECT = 0, ACTION_ANNOUNCE = 1, ACTION_SCRAPE = 2, ACTION_ERROR = 3;
 var connectionIdHigh = 0x417, connectionIdLow = 0x27101980;
@@ -51,7 +52,11 @@ var ClientWeb = (function (_super) {
         self.server.onopen = function () {
             self.prepAnnounce();
         };
-        self.server.onmessage = function (e) { self.message(e.data); };
+        self.server.onmessage = function (e) {
+            toBuffer(e.data, function (err, buffer) {
+                self.message(buffer);
+            });
+        };
         return _this;
     }
     ClientWeb.prototype.prepAnnounce = function () {
@@ -85,16 +90,7 @@ var ClientWeb = (function (_super) {
     };
     ClientWeb.prototype.sendPacket = function (buf) {
         var self = this;
-        if (self.TYPE === "udp") {
-            self.server.send(buf, 0, buf.length, self.PORT, self.HOST, function (err) {
-                if (err) {
-                    self.emit("error", err);
-                }
-            });
-        }
-        else {
-            self.server.send(buf);
-        }
+        self.server.send(buf);
     };
     ClientWeb.prototype.startConnection = function () {
         var self = this;
