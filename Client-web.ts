@@ -69,7 +69,7 @@ class ClientWeb extends EventEmitter {
     // Setup server
 
     self.HOST = "ws://" + self.HOST + ":" + self.PORT;
-    self.server = new w3cwebsocket( self.HOST, 'echo-protocol' );
+    self.server = new w3cwebsocket( self.HOST, "echo-protocol" );
     self.server.onopen = () => {
       self.prepAnnounce();
     };

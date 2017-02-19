@@ -37,18 +37,18 @@ import * as crypto from "crypto";
 //     });
 //   }, 1000);
 // });
-// test("ws Client downloading scrape", (t) => {
-//   t.plan(1);
+test("ws Client downloading scrape", (t) => {
+  t.plan(1);
+
+  t.true( true );
+
+  t.end();
+});
+
+
+// function randomHash() {
+//   let num = Math.floor(Math.random() * (10000000 - 1)) + 1;
+//   let rh  = crypto.createHash("sha1").update(num.toString()).digest("hex");
 //
-//   t.true( true );
-//
-//   t.end();
-// });
-
-
-function randomHash() {
-  let num = Math.floor(Math.random() * (10000000 - 1)) + 1;
-  let rh  = crypto.createHash("sha1").update(num.toString()).digest("hex");
-
-  return rh;
-}
+//   return rh;
+// }

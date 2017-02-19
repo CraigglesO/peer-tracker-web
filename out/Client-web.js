@@ -48,7 +48,7 @@ var ClientWeb = (function (_super) {
         self.IP_ADDRESS = 0;
         self.SCRAPE = false;
         self.HOST = "ws://" + self.HOST + ":" + self.PORT;
-        self.server = new websocket_1.w3cwebsocket(self.HOST, 'echo-protocol');
+        self.server = new websocket_1.w3cwebsocket(self.HOST, "echo-protocol");
         self.server.onopen = function () {
             self.prepAnnounce();
         };
