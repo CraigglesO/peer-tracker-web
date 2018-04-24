@@ -56,7 +56,7 @@
     "compact2string": "^1.4.0",
     "express": "^4.14.0",
     "geoip-native-lite": "^0.2.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.9",
     "mongoose": "^4.7.6",
     "readuint64be": "^1.0.5",
     "redis": "^2.6.3",
